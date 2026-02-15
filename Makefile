@@ -1,4 +1,5 @@
 CXXFLAGS =	-std=c++23 -O0 -Wall
+#CXXFLAGS += -DFIX_FALSE_SHARING
 
 TARGET =	a.out
 
