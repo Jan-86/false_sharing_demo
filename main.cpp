@@ -19,7 +19,7 @@ struct Data {
 	}
 };
 
-const long nb_iter = 100000000l;
+long nb_iter = 100000000l; // global and not const to prevent the compiler from optimizing out the loop in work()
 
 void work(long &e) {
   while(e<nb_iter)
