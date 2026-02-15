@@ -1,15 +1,12 @@
-CXXFLAGS =	-std=c++23 -O0 -Wall
-#CXXFLAGS += -DFIX_FALSE_SHARING
+CXXFLAGS = -std=c++23 -O2 -Wall
 
-TARGET =	a.out
+all: with_false_sharing.out without_false_sharing.out
 
-main.o: main.cpp
-  g++ -o $@ -c $< $(CXXFLAGS)
-
-$(TARGET):	main.o
-	g++ -o $@ $^
-
-all:	$(TARGET)
+without_false_sharing.out: main.cpp
+	g++ -o $@ $< $(CXXFLAGS) -DFIX_FALSE_SHARING
+	
+with_false_sharing.out: main.cpp
+	g++ -o $@ $< $(CXXFLAGS)
 
 clean:
-	rm -f main.o $(TARGET)
+	rm -f without_false_sharing.out with_false_sharing.out
